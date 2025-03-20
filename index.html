@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo da Esfera</title>
+    
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1em;
+    margin-bottom: 10px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+#resultados {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+</style>
+<body>
+    <div class="container">
+        <h1>Cálculo da Esfera</h1>
+        <label for="raio">Raio da Esfera (R):</label>
+        <input type="number" id="raio" placeholder="Digite o raio" />
+        <button onclick="calcular()">Calcular</button>
+
+        <div id="resultados">
+            <p><strong>Comprimento da Esfera (C):</strong> <span id="comprimento"></span></p>
+            <p><strong>Área da Esfera (A):</strong> <span id="area"></span></p>
+            <p><strong>Volume da Esfera (V):</strong> <span id="volume"></span></p>
+        </div>
+    </div>
+
+    <script>
+function calcular() {
+    // Recebe o valor do raio
+    const raio = parseFloat(document.getElementById('raio').value);
+
+    // Verifica se o valor do raio é válido
+    if (isNaN(raio) || raio <= 0) {
+        alert('Por favor, insira um valor válido para o raio.');
+        return;
+    }
+
+    // Cálculos
+    const pi = Math.PI;
+
+    // 1) Comprimento da esfera: C = 2 * π * R
+    const comprimento = 2 * pi * raio;
+
+    // 2) Área da esfera: A = π * R^2
+    const area = pi * Math.pow(raio, 2);
+
+    // 3) Volume da esfera: V = (4/3) * π * R^3
+    const volume = (4/3) * pi * Math.pow(raio, 3);
+
+    // Exibe os resultados na tela
+    document.getElementById('comprimento').textContent = comprimento.toFixed(2);
+    document.getElementById('area').textContent = area.toFixed(2);
+    document.getElementById('volume').textContent = volume.toFixed(2);
+}
+
+    </script>
+</body>
+</html>
